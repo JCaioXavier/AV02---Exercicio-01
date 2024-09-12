@@ -1,0 +1,71 @@
+import java.util.Scanner;
+
+public class GitHub {
+    public static void main(String[] args){
+        Scanner scan = new Scanner(System.in);
+
+        float valorUm, valorDois;
+
+        while(true){
+            System.out.println("Digite o primeiro valor: ");
+            valorUm = scan.nextFloat();
+
+            System.out.println("Digite o segundo valor: ");
+            valorDois = scan.nextFloat();
+
+            int escolha = operacao();
+
+            if (escolha == 1) {
+                System.out.printf("%.2f + %.2f = %.2f\n",valorUm, valorDois, valorUm + valorDois);
+            }
+            else if (escolha == 2) {
+                System.out.printf("%.2f - %.2f = %.2f\n",valorUm, valorDois, valorUm - valorDois);
+            }
+            else if (escolha == 3)
+            {
+                if(valorDois == 0){
+                    System.out.println("Não é possivel divisão por 0!");
+                    System.out.println("Digite novamente a sua operação.");
+                    continue;
+                }
+                System.out.printf("%.2f / %.2f = %.2f\n",valorUm, valorDois, valorUm / valorDois);
+            }
+            else {
+                System.out.printf("%.2f * %.2f = %.2f\n",valorUm, valorDois, valorUm * valorDois);
+            }
+
+            System.out.println("Deseja fazer outra operação?");
+            System.out.println("Sim -> 1");
+            System.out.println("Não -> 2");
+            int novaOperacao = scan.nextInt();
+
+            while(novaOperacao != 1 && novaOperacao != 2){
+                System.out.println("Digite uma opção valida!");
+                novaOperacao = scan.nextInt();
+            }
+
+            if(novaOperacao == 2){
+                return;
+            }
+        }
+    }
+
+    public static int operacao(){
+
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Escolha a operação desejada: ");
+        System.out.println("Soma --------> 1");
+        System.out.println("Subtração ---> 2");
+        System.out.println("Divisão -----> 3");
+        System.out.println("Multiplicão -> 4");
+
+        int escolha = scan.nextInt();
+
+        while(escolha < 1 || escolha > 4){
+            escolha = operacao();
+        }
+
+        return escolha;
+    }
+}
